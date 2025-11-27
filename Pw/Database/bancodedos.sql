@@ -1,15 +1,13 @@
 CREATE DATABASE IF NOT EXISTS sistema_orcamento;
 USE sistema_orcamento;
 
-CREATE TABLE orcamentos (
+CREATE TABLE IF NOT EXISTS orcamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    cliente VARCHAR(100) NOT NULL,
-    descricao TEXT NOT NULL,
+    cliente VARCHAR(255) NOT NULL,
+    servico VARCHAR(255) NOT NULL,
     valor DECIMAL(10,2) NOT NULL,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(20) DEFAULT 'pendente'
+    descricao TEXT,
+    status ENUM('pendente', 'aprovado', 'recusado') DEFAULT 'pendente',
+    data_criacao DATETIME NOT NULL,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
-INSERT INTO orcamentos (cliente, descricao, valor, status) VALUES
-('João Silva', 'Site institucional', 2500.00, 'aprovado'),
-('Maria Santos', 'Consultoria marketing', 1800.00, 'pendente');
