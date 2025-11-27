@@ -3,8 +3,19 @@ class OrcamentoDAO {
     private $pdo;
     
     public function __construct() {
-        $this->pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        define('DB_HOST', 'localhost');
+        define('DB_NAME', 'sistema_orcamento');
+        define('DB_USER', 'root');
+        define('DB_PASS', '');
+        
+        try {
+            $this->pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Erro na conexão com o banco de dados: " . $e->getMessage());
+        }
     }
     
     public function listar() {

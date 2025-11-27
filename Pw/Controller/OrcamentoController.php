@@ -9,7 +9,7 @@ class OrcamentoController {
     public function listar() {
         $orcamentos = $this->dao->listar();
         
-        // Aqui você carregaria uma view para exibir os orçamentos
+        
         echo "<h1>Lista de Orçamentos</h1>";
         echo "<table border='1'>";
         echo "<tr><th>ID</th><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Status</th><th>Ações</th></tr>";
