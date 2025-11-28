@@ -1,10 +1,16 @@
 <?php
+require_once 'config.php';
+
 class OrcamentoDAO {
     private $pdo;
     
     public function __construct() {
-        $this->pdo = new PDO("mysql:localhost=" . DB_HOST . ";sistema_orcamento=" . DB_NAME, ";root=".DB_USER, DB_PASS);
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $this->pdo = new PDO("mysql:host=localhost;dbname=sistema_orçamento", "root", "");
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            die("Erro de conexão: " . $e->getMessage());
+        }
     }
     
     public function listar() {
