@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS orcamentos (
     data_criacao DATETIME NOT NULL
 );
 
--- Inserir alguns dados de exemplo
+
 INSERT INTO orcamentos (cliente, servico, valor, descricao, status, data_criacao) VALUES
 ('João Silva', 'Desenvolvimento Web', 2500.00, 'Desenvolvimento de site institucional', 'aprovado', NOW()),
 ('Maria Santos', 'Consultoria TI', 1800.00, 'Consultoria em infraestrutura de TI', 'pendente', NOW()),

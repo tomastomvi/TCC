@@ -1,8 +1,9 @@
 <?php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'sistema_orçamento');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+$host = 'localhost';
+$dbname = 'sistema_orçamento';
+$usuario = 'root';
+$senha = '';
 
+$conexão = mysqli_connect($host, $usuario, $senha, $dbname) or die ("não consegui conectar");
+ 
 ?>
-
