@@ -1,4 +1,7 @@
 <?php
+// controller/RelatorioController.php
+require_once '../model/OrcamentoDAO.php';
+
 class RelatorioController {
     private $dao;
     
@@ -9,7 +12,7 @@ class RelatorioController {
     public function geral() {
         $orcamentos = $this->dao->listar();
         
-        // Simulação de dados para relatório
+        // SEU CÓDIGO DE CÁLCULO
         $total = 0;
         $aprovados = 0;
         $pendentes = 0;
@@ -22,12 +25,8 @@ class RelatorioController {
             if ($o['status'] == 'recusado') $recusados++;
         }
         
-        echo "<h1>Relatório Geral</h1>";
-        echo "<p>Total de Orçamentos: " . count($orcamentos) . "</p>";
-        echo "<p>Valor Total: R$ " . number_format($total, 2, ',', '.') . "</p>";
-        echo "<p>Aprovados: $aprovados</p>";
-        echo "<p>Pendentes: $pendentes</p>";
-        echo "<p>Recusados: $recusados</p>";
+        // Agora precisa de uma view
+        require_once '../view/relatorio/geral.php';
     }
 }
 ?>
